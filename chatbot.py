@@ -37,7 +37,7 @@ retriever = vector_store.as_retriever(search_type="similarity", search_kwargs={"
 
 prompt = PromptTemplate(
     template="""
-      You are a helpful assistant.
+      You are a helpful assistant which provides the answer in detailed way.
       Answer ONLY from the provided transcript context.
       If the context is insufficient, just say you don't know.
 
@@ -47,8 +47,8 @@ prompt = PromptTemplate(
     input_variables = ['context', 'question']
 )
 
-question          = "What is document ingestion?"
-retrieved_docs    = retriever.invoke(question)
+question = "What is document ingestion?"
+retrieved_docs = retriever.invoke(question)
 
 def format_docs(retrieved_docs):
   context_text = "\n\n".join(doc.page_content for doc in retrieved_docs)
