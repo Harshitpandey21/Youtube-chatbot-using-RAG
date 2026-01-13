@@ -12,9 +12,9 @@ load_dotenv()
 # Document Ingestion 
 
 video_id = "AUQJ9eeP-Ls"
-api = YouTubeTranscriptApi()
+youtube_api = YouTubeTranscriptApi()
 try:
-    transcript_list = api.fetch(video_id = video_id, languages = ["en"])
+    transcript_list = youtube_api.fetch(video_id = video_id, languages = ["en"])
     transcript = " ".join(chunk.text for chunk in transcript_list)
 
 except TranscriptsDisabled:
