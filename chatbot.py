@@ -9,8 +9,6 @@ from langchain_core.output_parsers import StrOutputParser
 
 load_dotenv()
 
-# Document Ingestion 
-
 video_id = "AUQJ9eeP-Ls"
 youtube_api = YouTubeTranscriptApi()
 try:
@@ -21,19 +19,15 @@ except TranscriptsDisabled:
     print("Transcripts are disabled for this video.")
 
 
-# Text Splitter 
 text_splitter = RecursiveCharacterTextSplitter(chunk_size = 1000, chunk_overlap = 200)
 chunks = text_splitter.create_documents([transcript])
 
-#Embeddings & Vector Store
 embeddings = OpenAIEmbeddings(model = "text-embedding-3-small")
 vector_store = FAISS.from_documents(chunks, embeddings)
-
-#Retriever 
+ 
 
 retriever = vector_store.as_retriever(search_type="similarity", search_kwargs={"k": 4})
 
-#Augmentation
 
 prompt = PromptTemplate(
     template="""
@@ -53,11 +47,9 @@ retrieved_docs = retriever.invoke(question)
 def format_docs(retrieved_docs):
   context_text = "\n\n".join(doc.page_content for doc in retrieved_docs)
   return context_text
-
-#LLM 
-llm= ChatOpenAI(model = 'gpt-4o')
-
-#Chain 
+ 
+llm= ChatOpenAI(model = 'gpt-4o-mini')
+ 
 parallel_chain = RunnableParallel({
     'context': retriever | RunnableLambda(format_docs),
     'question': RunnablePassthrough()
