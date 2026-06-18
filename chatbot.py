@@ -9,7 +9,7 @@ from langchain_core.output_parsers import StrOutputParser
 
 load_dotenv()
 
-video_id = "AUQJ9eeP-Ls" ## Youtube Video ID 
+video_id = "AUQJ9eeP-Ls" ## Random Youtube Video ID 
 youtube_api = YouTubeTranscriptApi()
 try:
     transcript_list = youtube_api.fetch(video_id = video_id, languages = ["en"])
