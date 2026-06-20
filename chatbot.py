@@ -12,7 +12,7 @@ load_dotenv()
 video_id = "AUQJ9eeP-Ls" ## Random Youtube Video ID 
 youtube_api = YouTubeTranscriptApi()
 try:
-    transcript_list = youtube_api.fetch(video_id = video_id, languages = ["en"])
+    transcript_list = youtube_api.fetch(video_id = video_id, languages = ["en"]) # English language is selected
     transcript = " ".join(chunk.text for chunk in transcript_list)
 
 except TranscriptsDisabled:
