@@ -22,7 +22,7 @@ except TranscriptsDisabled:
 text_splitter = RecursiveCharacterTextSplitter(chunk_size = 1000, chunk_overlap = 200)
 chunks = text_splitter.create_documents([transcript])
 
-embeddings = OpenAIEmbeddings(model = "text-embedding-3-small")
+embeddings = OpenAIEmbeddings(model = "text-embedding-3-small") # Used OpenAI Embeddings
 vector_store = FAISS.from_documents(chunks, embeddings)
  
 
