@@ -16,7 +16,7 @@ try:
     transcript = " ".join(chunk.text for chunk in transcript_list)
 
 except TranscriptsDisabled:
-    print("Transcripts are disabled for this video.")
+    print("Transcripts are disabled for this video, try another video.")
 
 
 text_splitter = RecursiveCharacterTextSplitter(chunk_size = 1000, chunk_overlap = 200)
