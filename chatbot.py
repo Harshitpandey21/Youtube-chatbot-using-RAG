@@ -41,7 +41,7 @@ prompt = PromptTemplate(
     input_variables = ['context', 'question']
 )
 
-question = "What is document ingestion?"
+question = "What is document ingestion?" # Any Question 
 retrieved_docs = retriever.invoke(question)
 
 def format_docs(retrieved_docs):
