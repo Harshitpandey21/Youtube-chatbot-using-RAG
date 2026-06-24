@@ -48,7 +48,7 @@ def format_docs(retrieved_docs):
   context_text = "\n\n".join(doc.page_content for doc in retrieved_docs)
   return context_text
  
-llm= ChatOpenAI(model = 'gpt-4o-mini')
+llm= ChatOpenAI(model = 'gpt-4o-mini') # Used OpenAI model
  
 parallel_chain = RunnableParallel({
     'context': retriever | RunnableLambda(format_docs),
