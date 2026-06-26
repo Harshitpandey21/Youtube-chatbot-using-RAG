@@ -19,7 +19,7 @@ except TranscriptsDisabled:
     print("Transcripts are disabled for this video, try another video.")
 
 
-text_splitter = RecursiveCharacterTextSplitter(chunk_size = 1000, chunk_overlap = 200)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size = 1000, chunk_overlap = 250)
 chunks = text_splitter.create_documents([transcript])
 
 embeddings = OpenAIEmbeddings(model = "text-embedding-3-small") # Used OpenAI Embeddings
