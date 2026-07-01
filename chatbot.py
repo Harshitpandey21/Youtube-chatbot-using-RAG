@@ -55,7 +55,7 @@ parallel_chain = RunnableParallel({
     'question': RunnablePassthrough()
 })
 
-parser = StrOutputParser()
+parser = StrOutputParser() # Parser
 
 final_chain = parallel_chain | prompt | llm | parser # used chain
 answer = final_chain.invoke(question)
